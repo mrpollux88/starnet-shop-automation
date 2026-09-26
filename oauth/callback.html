@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StarNet Etsy Authorization</title>
+</head>
+<body>
+  <h1>Etsy Authorization Received</h1>
+  <p>Authorization has returned to StarNet Shop Automation.</p>
+
+  <h2>Authorization Code</h2>
+  <pre id="code">Waiting...</pre>
+
+  <h2>State</h2>
+  <pre id="state">Waiting...</pre>
+
+  <p>You may close this page after recording the authorization result.</p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const code = params.get("code");
+    const state = params.get("state");
+    const error = params.get("error");
+
+    document.getElementById("code").textContent =
+      code || error || "No authorization code received.";
+
+    document.getElementById("state").textContent =
+      state || "No state value received.";
+  </script>
+</body>
+</html>
